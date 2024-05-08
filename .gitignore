@@ -1,3 +1,5 @@
 authentication/
 .soco_virtual_environment
 .DS_Store
+venv/
+.idea
