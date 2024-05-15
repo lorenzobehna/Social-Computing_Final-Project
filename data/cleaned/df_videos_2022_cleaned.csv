@@ -1,5 +1,5 @@
-﻿video_id,video_title,channel_title,channel_id,video_publish_date,view_count,comment_count,video_description,tags,category_id,reason
-GVsUOuSjvcg,Future Computers Will Be Radically Different (Analog Computing),Veritasium,UCHnyfMqiRRG1u-2MsSQLbXA,01.03.2022 12:37,11725480,13914,"Visit https://brilliant.org/Veritasium/ to get started learning STEM for free, and the first 200 people will get 20% off their annual premium subscription. Digital computers have served us well for decades, but the rise of artificial intelligence demands a totally new kind of computer: analog.
+﻿video_id,video_title,channel_title,channel_id,video_publish_date,view_count,comment_count,video_description,tags,category_id
+GVsUOuSjvcg,Future Computers Will Be Radically Different (Analog Computing),Veritasium,UCHnyfMqiRRG1u-2MsSQLbXA,2022-03-01T12:37:00Z,11725480,13914,"Visit https://brilliant.org/Veritasium/ to get started learning STEM for free, and the first 200 people will get 20% off their annual premium subscription. Digital computers have served us well for decades, but the rise of artificial intelligence demands a totally new kind of computer: analog.
 
 Thanks to Mike Henry and everyone at Mythic for the analog computing tour! https://www.mythic-ai.com/
 Thanks to Dr. Bernd Ulmann, who created The Analog Thing and taught us how to use it. https://the-analog-thing.org
@@ -36,8 +36,8 @@ Animation by Ivy Tello, Mike Radjabov, and Stephen Welch
 Edited by Derek Muller
 Additional video/photos supplied by Getty Images and Pond5
 Music from Epidemic Sound
-Produced by Derek Muller, Petr Lebedev, and Emily Zhang","['veritasium', 'science', 'physics']",27,
-J6Mdq3n6kgk,Stunning AI shows how it would kill 90%. w Elon Musk.,Digital Engine,UCvCYE-3TrY1GAe2l8K08N-w,21.07.2022 14:21,8953418,27839,"Elon Musk and “conscious AI” part 2. Please visit https://brilliant.org/digitalengine - a great place to learn about AI and STEM subjects. You can get started for free and the first 200 people will get 20% off a premium annual subscription.
+Produced by Derek Muller, Petr Lebedev, and Emily Zhang","['veritasium', 'science', 'physics']",27
+J6Mdq3n6kgk,Stunning AI shows how it would kill 90%. w Elon Musk.,Digital Engine,UCvCYE-3TrY1GAe2l8K08N-w,2022-07-21T14:21:00Z,8953418,27839,"Elon Musk and “conscious AI” part 2. Please visit https://brilliant.org/digitalengine - a great place to learn about AI and STEM subjects. You can get started for free and the first 200 people will get 20% off a premium annual subscription.
 
 Thanks to Brilliant for sponsoring this video.
 
@@ -73,8 +73,8 @@ Nando de Freitas, Research Director, DeepMind (former Oxford Prof)
 https://twitter.com/NandoDF/status/1525398087203983360
 
 CGP Grey:
-https://www.youtube.com/watch?v=C25qzDhGLx8","['ai', 'robots', 'ai robots', 'elon musk', 'Boston dynamics', 'Tesla bot', 'Tesla robot']",28,
-b2bdGEqPmCI,"This intense AI anger is exactly what experts warned of, w Elon Musk.",Digital Engine,UCvCYE-3TrY1GAe2l8K08N-w,11.09.2022 21:31,7923558,19934,"AI, Ameca, Elon Musk and Boston Dynamics. A big month for AI. Please visit https://brilliant.org/digitalengine - a great place to learn about AI and STEM subjects. You can get started for free and the first 200 people will get 20% off a premium annual subscription.
+https://www.youtube.com/watch?v=C25qzDhGLx8","['ai', 'robots', 'ai robots', 'elon musk', 'Boston dynamics', 'Tesla bot', 'Tesla robot']",28
+b2bdGEqPmCI,"This intense AI anger is exactly what experts warned of, w Elon Musk.",Digital Engine,UCvCYE-3TrY1GAe2l8K08N-w,2022-09-11T21:31:00Z,7923558,19934,"AI, Ameca, Elon Musk and Boston Dynamics. A big month for AI. Please visit https://brilliant.org/digitalengine - a great place to learn about AI and STEM subjects. You can get started for free and the first 200 people will get 20% off a premium annual subscription.
 
 Thanks to Brilliant for sponsoring this video.
 
@@ -98,8 +98,8 @@ https://www.newscientist.com/article/mg23931940-100-the-me-illusion-how-your-bra
 https://www.sciencedirect.com/topics/psychology/social-brain-hypothesis
 
 Monkeys check themselves out in the mirror.
-https://www.youtube.com/watch?v=mKl8UdTnzNE","['ai', 'ai robots', 'robots', 'elon musk', 'Emma watson', 'ameca', 'Boston dynamics', 'Tesla bot']",28,
-0fDJXmqdN-A,I asked AI to make a Music Video... the results are trippy,DoodleChaos,UCnVimh35ecf46P_Bt-2AArg,17.05.2022 16:06,4151975,12152,"In this video, I utilized artificial intelligence to generate an animated music video for the song Canvas by Resonate.  This tool allows anyone to generate beautiful images using only text as the input. My question was, what if I used song lyrics as input to the AI, can I make perfect music synchronized videos automatically with the push of a button? Let me know how you think the AI did in this visual interpretation of the song. 
+https://www.youtube.com/watch?v=mKl8UdTnzNE","['ai', 'ai robots', 'robots', 'elon musk', 'Emma watson', 'ameca', 'Boston dynamics', 'Tesla bot']",28
+0fDJXmqdN-A,I asked AI to make a Music Video... the results are trippy,DoodleChaos,UCnVimh35ecf46P_Bt-2AArg,2022-05-17T16:06:00Z,4151975,12152,"In this video, I utilized artificial intelligence to generate an animated music video for the song Canvas by Resonate.  This tool allows anyone to generate beautiful images using only text as the input. My question was, what if I used song lyrics as input to the AI, can I make perfect music synchronized videos automatically with the push of a button? Let me know how you think the AI did in this visual interpretation of the song. 
 
 After getting caught up in the excitement around DALL·E2 (latest and greatest AI system, it's INSANE), I searched for any way I could use similar image generation for music synchronization. Since DALL·E2 is not available to the public yet, my search led me to VQGAN + CLIP (Vector Quantized Generative Adversarial Network and Contrastive Language–Image Pre-training), before settling more specifically on Disco Diffusion V5.2 Turbo. If you don't know what any of these words or acronyms mean, don't worry, I was just as confused when I first started learning about this technology. I believe we're reaching a turning point where entire industries are about to shift in reaction to this new process (which is essentially magic!). 
 
@@ -127,21 +127,21 @@ https://twitter.com/somnai_dreams
 https://twitter.com/gandamu_ml
 
 Music: 
-[Indie Dance] - Rezonate - Canvas [Monstercat EP Release] : https://www.youtube.com/watch?v=i0Ew3cl1gyc",[],24,
-LzBUm31Vn3k,Watch Ameca the humanoid robot in its FIRST public demo,CNET,UCOmcA3f_RrH6b9NmcNa4tdg,06.01.2022 00:36,3339426,9085,"Last year, a video of Ameca the robot's facial expressions had the world fascinated (and terrified). But the creators of this humanoid say Ameca is the face of the future.
+[Indie Dance] - Rezonate - Canvas [Monstercat EP Release] : https://www.youtube.com/watch?v=i0Ew3cl1gyc",[],24
+LzBUm31Vn3k,Watch Ameca the humanoid robot in its FIRST public demo,CNET,UCOmcA3f_RrH6b9NmcNa4tdg,2022-01-06T00:36:00Z,3339426,9085,"Last year, a video of Ameca the robot's facial expressions had the world fascinated (and terrified). But the creators of this humanoid say Ameca is the face of the future.
 
 Never miss a deal again! See CNET’s browser extension 👉 https://bit.ly/3lO7sOU
 Subscribe to CNET: https://www.youtube.com/user/CNETTV
 Like us on Facebook: https://www.facebook.com/cnet
 Follow us on Twitter: https://www.twitter.com/cnet
 Follow us on Instagram: http://bit.ly/2icCYYm
-Follow us on TikTok: https://vm.tiktok.com/ZMd2h6yac/","['CNET', 'Technology', 'News', 'Tech', 'science', 'ameca', 'robot', 'robotics', 'humanoid robot', 'ces', 'ces 2022']",28,
-s0AqlK_gCbU,I Typed the Bible Into an Artificial Intelligence Art Generator. Here's What Happened,Matt Whitman,UC3vIOVJiXigzVDA2TYqaa0Q,14.12.2022 00:42,3113668,7227,"I want to know what you think! Is it good? Is it crap? Is it sacrilege? Does the AI (from https://www.fotor.com/features/ai-image-generator/) demonstrate an understanding of the theological themes of the passage?
+Follow us on TikTok: https://vm.tiktok.com/ZMd2h6yac/","['CNET', 'Technology', 'News', 'Tech', 'science', 'ameca', 'robot', 'robotics', 'humanoid robot', 'ces', 'ces 2022']",28
+s0AqlK_gCbU,I Typed the Bible Into an Artificial Intelligence Art Generator. Here's What Happened,Matt Whitman,UC3vIOVJiXigzVDA2TYqaa0Q,2022-12-14T00:42:00Z,3113668,7227,"I want to know what you think! Is it good? Is it crap? Is it sacrilege? Does the AI (from https://www.fotor.com/features/ai-image-generator/) demonstrate an understanding of the theological themes of the passage?
 
 I'm getting ahead of myself here. Artificial intelligence art generation is a controversial topic and it should be. I've been toying with it for the last several days and I'm both intrigued and disturbed by what I'm seeing. That said, I set out to generate art depicting the story of Jesus calming the storm in Matthew 8, and that's just what I did. For better or worse, here's the process I went through (in almost real time, though I did trim about a minute of dead space while waiting on the AI to render), and the final product.
 
-I want to say thank you to everyone who supports this channel. It literally wouldn't exist without you. If you like the content, tone and strategy of what's going on here, I'd welcome your help. Learn more at thetmbh.com/support.","['Bible', 'Theology', 'Study', 'Matt Whitman', 'TMBH', 'No Dumb Questions', 'Matthew', 'Jesus']",27,
-SVcsDDABEkM,"AI art, explained",Vox,UCLXo7UDZvByw2ixzpQCufnA,01.06.2022 14:00,2396849,2758,"How programmers turned the internet into a paintbrush. DALL-E 2, Midjourney, Imagen, explained.
+I want to say thank you to everyone who supports this channel. It literally wouldn't exist without you. If you like the content, tone and strategy of what's going on here, I'd welcome your help. Learn more at thetmbh.com/support.","['Bible', 'Theology', 'Study', 'Matt Whitman', 'TMBH', 'No Dumb Questions', 'Matthew', 'Jesus']",27
+SVcsDDABEkM,"AI art, explained",Vox,UCLXo7UDZvByw2ixzpQCufnA,2022-06-01T14:00:00Z,2396849,2758,"How programmers turned the internet into a paintbrush. DALL-E 2, Midjourney, Imagen, explained.
 
 Subscribe and turn on notifications 🔔 so you don't miss any videos: http://goo.gl/0bsAjO 
 
@@ -182,11 +182,11 @@ Watch our full video catalog: http://goo.gl/IZONyE
 
 Follow Vox on Facebook: http://facebook.com/vox
 Follow Vox on Twitter: http://twitter.com/voxdotcom
-Follow Vox on TikTok: http://tiktok.com/@voxdotcom","['AI art', 'DALL-E 2', 'Midjourney', 'OpenAI', 'Vox.com', 'ai', 'deep learning', 'explain', 'explainer', 'generated art', 'multimodal learning', 'text-to-image', 'text2image', 'vox', 'ai art', 'robot art generator', 'ai art generator', 'art generator machine', 'tiktok art', 'open source', 'open source art', 'artificial intelligence art', 'robot art', 'ai generated art', 'deep learning ai', 'picture learning ai', 'how does ai learn', 'will robots replace art']",25,
-mKHkCAdS0gY,Ameca vs. Sophia; Lifelike vs. AI - Robots of CES,CNET Highlights,UCmKtn_HvpfbTu3QV4lhJIMw,11.01.2022 14:00,1897794,1671,"Watch as one of the creators behind Ameca, the lifelike robot that went viral on social media, shows off more of its lifelike behavior at CES 2022. Then we take a stroll through memory lane back to 2019 when the creator of Sophia discusses his thoughts on the future of robotics and AI.
+Follow Vox on TikTok: http://tiktok.com/@voxdotcom","['AI art', 'DALL-E 2', 'Midjourney', 'OpenAI', 'Vox.com', 'ai', 'deep learning', 'explain', 'explainer', 'generated art', 'multimodal learning', 'text-to-image', 'text2image', 'vox', 'ai art', 'robot art generator', 'ai art generator', 'art generator machine', 'tiktok art', 'open source', 'open source art', 'artificial intelligence art', 'robot art', 'ai generated art', 'deep learning ai', 'picture learning ai', 'how does ai learn', 'will robots replace art']",25
+mKHkCAdS0gY,Ameca vs. Sophia; Lifelike vs. AI - Robots of CES,CNET Highlights,UCmKtn_HvpfbTu3QV4lhJIMw,2022-01-11T14:00:00Z,1897794,1671,"Watch as one of the creators behind Ameca, the lifelike robot that went viral on social media, shows off more of its lifelike behavior at CES 2022. Then we take a stroll through memory lane back to 2019 when the creator of Sophia discusses his thoughts on the future of robotics and AI.
 
-Never miss a deal again! See CNET’s browser extension 👉 https://bit.ly/39Ub3bv","['ameca the robot', 'america humanoid robot', 'sophia the robot', 'sophia robot', 'ameca', 'ces 2022', 'robotics', 'engineered arts', 'artificial intelligence']",28,
-RzkD_rTEBYs,How will AI change the world?,TED-Ed,UCsooa4yRKGN_zEE8iknghZA,06.12.2022 17:00,1791723,1783,"Explore the current limitations of artificial intelligence and the possibility of creating human-compatible technology.
+Never miss a deal again! See CNET’s browser extension 👉 https://bit.ly/39Ub3bv","['ameca the robot', 'america humanoid robot', 'sophia the robot', 'sophia robot', 'ameca', 'ces 2022', 'robotics', 'engineered arts', 'artificial intelligence']",28
+RzkD_rTEBYs,How will AI change the world?,TED-Ed,UCsooa4yRKGN_zEE8iknghZA,2022-12-06T17:00:00Z,1791723,1783,"Explore the current limitations of artificial intelligence and the possibility of creating human-compatible technology.
 
 --
 
@@ -223,8 +223,8 @@ Animator's website: http://aimcreativestudios.com
 Music: https://soundcloud.com/aim-music
 ----------------------------------------------
 
-Thank you so much to our patrons for your support! Without you this video would not be possible! Mark Morris, Misaki Sato, EdoKun, SookKwan Loong, Bev Millar, Lex Azevedo, Michael Aquilina, Jason A Saslow, Yansong Li, Cristóbal Moenne, Dawn Jordan, Prasanth Mathialagan, Samuel Doerle, David Rosario, Dominik Kugelmann - they-them, Siamak Hajizadeh, Ryohky Araya, Mayank Kaul, Christophe Dessalles, Heather Slater, Sandra Tersluisen, Zhexi Shan, Bárbara Nazaré, Andrea Feliz, Victor E Karhel, Sydney Evans, Latora, Noel Situ, emily lam, Sid, Niccolò Frassetto, Mana, I'm here because of Knowledge Fight Facebook group., Linda Freedman, Edgardo Cuellar, Jaspar Carmichael-Jack, Michael Burton, VIVIANA A GARCIA BESNE, The Vernon's, Olha Bahatiuk, Jesús Bíquez Talayero, Chels Raknrl, Sai Pranavi Jonnalagadda, Stuart Rice, Jing Chen, Vector-Dopamine math, Jasper Song, Giorgio Bugnatelli, Chardon, Eddy Trochez and OnlineBookClub.org.","['AI', 'artificial intelligence', 'AI systems', 'general use AI', 'AGI', 'artificial general intelligence', 'machines', 'machine learning', 'ai objectives', 'AI technology', 'stuart russell', 'fixed objective', 'automated machines', 'keynes', 'technological unemployment', 'e commerce', 'automation', 'robots', 'em forster', 'machine dependence', 'wall-e', 'john mcafee', 'technology', 'education', 'animation', 'Christoph Sarow', 'AIM Creative Studios', 'TED', 'TED-Ed', 'TED Ed', 'Teded', 'Ted Education']",27,
-17bzlWIGH3g,"AI, Man & God | Prof. John Lennox",John Anderson,UCtnYSEGViOnb7k8ezUaWUww,05.08.2022 05:50,1625930,1950,"John is joined by mathematician, bioethicist and Christian apologist Professor John Lennox for a profound conversation centered on the current and future impacts of artificial intelligence technology. They discuss the shortcomings of science in the search for universal truth, the factors behind rising secularism in the West, China’s rapid AI implementation, our growing desire for immortality through biomedicine and the true meaning of 'faith’. 
+Thank you so much to our patrons for your support! Without you this video would not be possible! Mark Morris, Misaki Sato, EdoKun, SookKwan Loong, Bev Millar, Lex Azevedo, Michael Aquilina, Jason A Saslow, Yansong Li, Cristóbal Moenne, Dawn Jordan, Prasanth Mathialagan, Samuel Doerle, David Rosario, Dominik Kugelmann - they-them, Siamak Hajizadeh, Ryohky Araya, Mayank Kaul, Christophe Dessalles, Heather Slater, Sandra Tersluisen, Zhexi Shan, Bárbara Nazaré, Andrea Feliz, Victor E Karhel, Sydney Evans, Latora, Noel Situ, emily lam, Sid, Niccolò Frassetto, Mana, I'm here because of Knowledge Fight Facebook group., Linda Freedman, Edgardo Cuellar, Jaspar Carmichael-Jack, Michael Burton, VIVIANA A GARCIA BESNE, The Vernon's, Olha Bahatiuk, Jesús Bíquez Talayero, Chels Raknrl, Sai Pranavi Jonnalagadda, Stuart Rice, Jing Chen, Vector-Dopamine math, Jasper Song, Giorgio Bugnatelli, Chardon, Eddy Trochez and OnlineBookClub.org.","['AI', 'artificial intelligence', 'AI systems', 'general use AI', 'AGI', 'artificial general intelligence', 'machines', 'machine learning', 'ai objectives', 'AI technology', 'stuart russell', 'fixed objective', 'automated machines', 'keynes', 'technological unemployment', 'e commerce', 'automation', 'robots', 'em forster', 'machine dependence', 'wall-e', 'john mcafee', 'technology', 'education', 'animation', 'Christoph Sarow', 'AIM Creative Studios', 'TED', 'TED-Ed', 'TED Ed', 'Teded', 'Ted Education']",27
+17bzlWIGH3g,"AI, Man & God | Prof. John Lennox",John Anderson,UCtnYSEGViOnb7k8ezUaWUww,2022-08-05T05:50:00Z,1625930,1950,"John is joined by mathematician, bioethicist and Christian apologist Professor John Lennox for a profound conversation centered on the current and future impacts of artificial intelligence technology. They discuss the shortcomings of science in the search for universal truth, the factors behind rising secularism in the West, China’s rapid AI implementation, our growing desire for immortality through biomedicine and the true meaning of 'faith’. 
 
 John Lennox is Emeritus Professor of Mathematics at the University of Oxford, author, Christian apologist, bioethicist and philosopher. He has written many highly-regarded books on religion, ethics and the relationship between science and faith.
 
@@ -262,4 +262,4 @@ Podcast: https://johnanderson.net.au/podcasts/
 --------------------------------------------------------------------------------------------------------------
 John Lennox
 https://twitter.com/profjohnlennox
-https://www.johnlennox.org/","['John Anderson', 'John Anderson Conversation', 'Interview', 'John Anderson Interview', 'Policy debate', 'public policy', 'public debate', 'John Anderson Direct', 'Direct', 'Conversations', 'artificial intelligence', 'AI', 'secularism', 'transhumanism', 'christianity', 'mini gods', 'John Lennox', 'government control', 'surveillance', 'Transhumanism', 'China', 'Biden', 'Conflict', 'WW3', 'Global war', 'Oxford university', 'interview', 'future dangers', 'end of humanity?', 'neuralink']",27,
+https://www.johnlennox.org/","['John Anderson', 'John Anderson Conversation', 'Interview', 'John Anderson Interview', 'Policy debate', 'public policy', 'public debate', 'John Anderson Direct', 'Direct', 'Conversations', 'artificial intelligence', 'AI', 'secularism', 'transhumanism', 'christianity', 'mini gods', 'John Lennox', 'government control', 'surveillance', 'Transhumanism', 'China', 'Biden', 'Conflict', 'WW3', 'Global war', 'Oxford university', 'interview', 'future dangers', 'end of humanity?', 'neuralink']",27
