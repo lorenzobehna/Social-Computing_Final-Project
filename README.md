@@ -11,7 +11,7 @@ You will find the following folders including the following files:
 - `data` → Contains all the datasets for comments and videos
 
 ## Authors
-Ishwarya Sutharsan, 20-117-040
-Kristina Horn, 21-730-783
-Rajiv Bains, 22-722-870
-Lorenzo Behna, 20-709-895
+- Ishwarya Sutharsan, 20-117-040
+- Kristina Horn, 21-730-783
+- Rajiv Bains, 22-722-870
+- Lorenzo Behna, 20-709-895
