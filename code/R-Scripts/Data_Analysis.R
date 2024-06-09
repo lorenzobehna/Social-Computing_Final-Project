@@ -3,7 +3,6 @@ library(magrittr)
 library(quanteda)
 library(quanteda.textstats)
 library(quanteda.textplots)
-#install.packages("quanteda.textmodels")
 library(quanteda.textmodels)
 library(jsonlite)
 library(stopwords)
@@ -12,7 +11,6 @@ library(RColorBrewer)
 # Read in the preliminarily filtered and cleaned comments
 df_comments <- read_csv("~/projects/Social-Computing_Final-Project/data/comments/R/filtered_and_cleaned_comments.csv")
 
-
 head(df_comments)
 summary(df_comments)
 
@@ -20,19 +18,18 @@ summary(df_comments)
 df_comments$comment_publish_date <- as.Date(df_comments$comment_publish_date, format="%Y-%m-%d")
 df_comments$video_publish_date <- as.Date(df_comments$comment_publish_date, format="%Y-%m-%d")
 
-# Drop unneeded comments
+# Basic mutations and dropping of unneeded columns
 df_comments <- df_comments |>
 	mutate(comment_text = gsub("\\b[aA]\\. [iI]\\b|\\b[aA] [iI]\\b|\\b[aA].[iI]\\b", "AI", comment_text, ignore.case = TRUE)) |> # Replace 'A I' and 'A. I' with 'AI' 
 	mutate(comment_text = gsub("(?i)artificial inteligence", "Artificial Intelligence", comment_text, perl = TRUE)) |> # Correct misspelling and use PERL for case insensitive tag(?i)
 	mutate(comment_text = gsub("\\b[0-9]+\\b", "", comment_text)) |>  # remove all standalone numbers
 	select(-video_year, -video_month, -video_running_month)
 
-class(df_comments)
 
 # Visualise comments count per year
 # Group the data by year and count the number of comments
-comment_count_by_year <- df_comments %>%
-	group_by(comment_year) %>%
+comment_count_by_year <- df_comments |> 
+	group_by(comment_year) |> 
 	summarise(comment_count = n())
 
 # Create a bar chart using ggplot2
@@ -44,16 +41,16 @@ ggplot(comment_count_by_year, aes(x = comment_year, y = comment_count)) +
 					   labels = 2017:2024) +
 	theme_minimal()
 
-## CREATING A CORPUS
 
-# creating the main corpus
+
+# Create the main corpus
 comments_corpus <- corpus(df_comments, text_field = "comment_text")
-# saving corpus
+# Save the corups
 save(comments_corpus, file = "~/projects/Social-Computing_Final-Project/data/comments/R/comments_corpus.RData")
-# load in corpus if needed
+# Load in corpus if needed
 load("~/projects/Social-Computing_Final-Project/data/comments/R/comments_corpus.RData")
 
-## main Corpus
+## Inspect main Corpus
 summary(comments_corpus) |> 
 	head()
 comments_corpus[1:5]
@@ -62,7 +59,7 @@ summary(comments_corpus,
 		n = ndoc(comments_corpus)) |> 
 	head()
 
-## KEYWORDS IN CONTEXT ANALYSIS
+# keywords in context analysis
 kwic(tokens(comments_corpus), pattern = phrase("A I"), 5) |> head(50)
 kwic(tokens(comments_corpus), pattern = phrase("A. I"), 5) |> head(50)
 kwic(tokens(comments_corpus), pattern = phrase("A. I."), 5) |> head(50)
@@ -71,7 +68,7 @@ kwic(tokens(comments_corpus), pattern = phrase("gpt"), 5) |> head(50)
 kwic(tokens(comments_corpus), pattern = phrase("Large Language Model"), 5) |> head(50)
 
 
-# creating token object for main corpus
+# Creating token object for main corpus
 tokens_comments <- tokens(comments_corpus,
 			   what = c("word"),
 			   remove_separators = TRUE,
@@ -83,8 +80,7 @@ tokens_comments <- tokens(comments_corpus,
 			   remove_hyphens = FALSE)
 tokens_comments |> head()
 
-## HANDLING COLLOCATIONS
-# looking at collocations to determine multiwords
+# Handling colocations: looking at collocations to determine multiwords
 coloc6 <- tokens_comments |> 
 	tokens_select(pattern = "^[A-Z]",
 				  valuetype = "regex",
@@ -136,7 +132,7 @@ coloc2 <- tokens_comments |>
 #coloc2
 
 
-# creating multiword list
+# Creating multiword list
 multiword <- c(
 	"Chat GPT",
 	"Artificial Intelligence",
@@ -153,7 +149,7 @@ multiword <- c(
 	"Social Media"
 )
 
-# adding the multiwords to the token objects
+# Adding the multiwords to the token objects
 tokens_comments <- tokens_compound(tokens_comments, pattern = phrase(multiword))
 
 ## FURTHER TEXT CLEANING
@@ -164,11 +160,6 @@ tokens_comments <-
 	tokens_remove(pattern = "^[[:punct:]]+$",
 				  valuetype = "regex",
 				  padding = TRUE)
-
-# remove tokens that are just numbers
-#tokens_comments <- 
-#	tokens_comments |> 
-#	gsub("\\b[0-9]+\\b", " ")
 
 # make lower case
 tokens_comments <- 
@@ -208,42 +199,42 @@ multiword_lowercase <- c(
 	"social media"
 )
 
-# adding the multiwords to the token objects
+# Adding the lowercase multiwords to the token objects
 tokens_comments <- tokens_compound(tokens_comments, pattern = phrase(multiword_lowercase))
 
-# save the token objects
+# Save the token objects
 save(tokens_comments, file = "~/projects/Social-Computing_Final-Project/data/comments/R/toksens_comments.RData")
 
-# if needed load the token objects
+# If needed load the token objects
 load("~/projects/Social-Computing_Final-Project/data/comments/R/toksens_comments.RData")
 
 
-
+# Create a document-feature-matrix 
 mydfm_tokens <- dfm(tokens_comments)
-# save the token document feature matrix
+# Save the token document feature matrix
 save(mydfm_tokens, file = "~/projects/Social-Computing_Final-Project/data/comments/R/mydfm_tokens.RData")
 
 
 ## SENTIMENT ANALYSIS
 
-# matching tokens to sentiment dictionary
+# Matching tokens to sentiment dictionary
 tokens_sentiment <- 
 	tokens_lookup(
 		tokens_comments,
 		dictionary = data_dictionary_LSD2015[1:2])
 head(tokens_sentiment, 20)
 
-# creating dfm out of toks_sentiment
+# Creating dfm out of toks_sentiment
 dfm_sentiment_entire_timespan <- dfm(tokens_sentiment)
 
-# converting it back to a data frame with all the docvars
+# Converting it back to a data frame with all the docvars
 ai_sentiment_entire_timespan <- 
 	cbind(convert(dfm_sentiment_entire_timespan, to = "data.frame"), docvars(dfm_sentiment_entire_timespan)) |> 
 	mutate(pos_to_neg = positive / (positive + negative))
 
 print(ai_sentiment_entire_timespan)
 
-# visualising the sentiment over time
+# Visualising the sentiment over time
 dfm_sentiment_graph_entire_timespan <- 
 	ai_sentiment_entire_timespan |> 
 	ggplot(aes(x = comment_running_month,
@@ -258,9 +249,7 @@ dfm_sentiment_graph_entire_timespan <-
 	theme_minimal()
 dfm_sentiment_graph_entire_timespan
 
-class(ai_sentiment_entire_timespan$comment_year)
-
-# visualising the sentiment over time by yearly average
+# Visualising the sentiment over time by yearly average
 dfm_sentiment_graph_entire_timespan_mean <- 
 	ai_sentiment_entire_timespan |> 
 	mutate(comment_year = as.numeric(comment_year)) |>  # Ensure comment_year is numeric
@@ -282,7 +271,7 @@ dfm_sentiment_graph_entire_timespan_mean
 
 
 
-### SAME WITH VADER
+### We also analysed the sentiment with VADER - the results where very similar to LSD2015
 
 install.packages("vader")
 library(vader)
@@ -311,10 +300,6 @@ ggplot(mean_vader_sentiment_per_year, aes(x = comment_year, y = mean_sentiment))
 
 
 ### CALCULATING MEAN SENTIMENT BEFORE CHATGPT AND AFTER
-# Define the timeframes
-timeframe1 <- as.Date("2017-01-01") : as.Date("2022-11-29")
-timeframe2 <- as.Date("2022-12-30") : as.Date("2024-03-31")
-
 dfm_sentiment_timeframe_before <- ai_sentiment_entire_timespan |> 
 	filter(comment_running_month >= 70)
 
@@ -333,11 +318,10 @@ print(paste("Mean pos_to_neg for timeframe before:", mean_pos_to_neg_timeframe_b
 print(paste("Mean pos_to_neg for timeframe after:", mean_pos_to_neg_timeframe_after$mean_pos_to_neg))
 
 ## TOPIC MODELLING 
-
-# creating document term matrix of pre and post twitter data 
 library(topicmodels)
 library(tm)
 
+# Creating document term matrix of pre and post twitter data 
 #trimming
 dtm_comments <- mydfm_tokens |> 
 	dfm_trim(sparsity = 0.999) |> 
@@ -396,7 +380,6 @@ save_wordcloud(2)
 save_wordcloud(3)
 
 ## STRUCTURAL TOPIC MODELL
-
 library(stm)
 # creating a document term matrix for the structural topic model
 dtm_stm <- mydfm_tokens |> 
@@ -415,8 +398,6 @@ stm_model <- stm(dtm_stm$documents,
 # label the topics
 labelTopics(stm_model)
 
-
-burnin_iterations <- 300  # specify the minimum number of burn-in iterations
 # create a second structural topic model over time using comment_running_month
 stm_model_2 <- stm(dtm_stm$documents,
 				   dtm_stm$vocab,
