@@ -3,6 +3,8 @@ library(magrittr)
 library(quanteda)
 library(quanteda.textstats)
 library(quanteda.textplots)
+#install.packages("quanteda.textmodels")
+library(quanteda.textmodels)
 library(jsonlite)
 library(stopwords)
 library(RColorBrewer)
@@ -20,11 +22,27 @@ df_comments$video_publish_date <- as.Date(df_comments$comment_publish_date, form
 
 # Drop unneeded comments
 df_comments <- df_comments |>
-	mutate(comment_text = gsub("\\b[aA]\\. [iI]\\b|\\b[aA] [iI]\\b", "AI", comment_text, ignore.case = TRUE)) |> # Replace 'A I' and 'A. I' with 'AI' 
+	mutate(comment_text = gsub("\\b[aA]\\. [iI]\\b|\\b[aA] [iI]\\b|\\b[aA].[iI]\\b", "AI", comment_text, ignore.case = TRUE)) |> # Replace 'A I' and 'A. I' with 'AI' 
 	mutate(comment_text = gsub("(?i)artificial inteligence", "Artificial Intelligence", comment_text, perl = TRUE)) |> # Correct misspelling and use PERL for case insensitive tag(?i)
+	mutate(comment_text = gsub("\\b[0-9]+\\b", "", comment_text)) |>  # remove all standalone numbers
 	select(-video_year, -video_month, -video_running_month)
 
 class(df_comments)
+
+# Visualise comments count per year
+# Group the data by year and count the number of comments
+comment_count_by_year <- df_comments %>%
+	group_by(comment_year) %>%
+	summarise(comment_count = n())
+
+# Create a bar chart using ggplot2
+ggplot(comment_count_by_year, aes(x = comment_year, y = comment_count)) +
+	geom_bar(stat = "identity") +
+	labs(x = "Year", y = "Number of Comments", title = "Comments per Year") +
+	scale_x_continuous(name = "Year",
+					   breaks = 2017:2024, 
+					   labels = 2017:2024) +
+	theme_minimal()
 
 ## CREATING A CORPUS
 
@@ -147,6 +165,11 @@ tokens_comments <-
 				  valuetype = "regex",
 				  padding = TRUE)
 
+# remove tokens that are just numbers
+#tokens_comments <- 
+#	tokens_comments |> 
+#	gsub("\\b[0-9]+\\b", " ")
+
 # make lower case
 tokens_comments <- 
 	tokens_comments |> 
@@ -165,13 +188,35 @@ tokens_comments <-
 # remove empty tokens 
 tokens_comments <- 
 	tokens_comments |> 
-	tokens_remove("")
+	tokens_remove("") |> 
+	tokens_remove(" ")
+
+# creating a lowercase multiword list
+multiword_lowercase <- c(
+	"chat gpt",
+	"artificial intelligence",
+	"elon musk",
+	"machine learning",
+	"ex machina",
+	"joe rogan",
+	"john oliver",
+	"i robot",
+	"turing test",
+	"star trek",
+	"neural network",
+	"reinforcement learning",
+	"social media"
+)
+
+# adding the multiwords to the token objects
+tokens_comments <- tokens_compound(tokens_comments, pattern = phrase(multiword_lowercase))
 
 # save the token objects
 save(tokens_comments, file = "~/projects/Social-Computing_Final-Project/data/comments/R/toksens_comments.RData")
 
 # if needed load the token objects
 load("~/projects/Social-Computing_Final-Project/data/comments/R/toksens_comments.RData")
+
 
 
 mydfm_tokens <- dfm(tokens_comments)
@@ -196,6 +241,8 @@ ai_sentiment_entire_timespan <-
 	cbind(convert(dfm_sentiment_entire_timespan, to = "data.frame"), docvars(dfm_sentiment_entire_timespan)) |> 
 	mutate(pos_to_neg = positive / (positive + negative))
 
+print(ai_sentiment_entire_timespan)
+
 # visualising the sentiment over time
 dfm_sentiment_graph_entire_timespan <- 
 	ai_sentiment_entire_timespan |> 
@@ -203,13 +250,87 @@ dfm_sentiment_graph_entire_timespan <-
 			   y = pos_to_neg)) +
 	labs(title = "Sentiment across all Comments",
 		 subtitle = "Using the LSD2015 Sentiment Dictionary")+
-	geom_scatter(alpha=0.2) +
+	geom_point(alpha=0.2) +
 	scale_x_continuous(name = "Time",
 					   breaks = c(seq(1, by = 12, length.out=8)),
 					   labels = c(2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024)) +
 	scale_y_continuous(name = "Sentiment (0 = negative, 1 = positive)") +
 	theme_minimal()
 dfm_sentiment_graph_entire_timespan
+
+class(ai_sentiment_entire_timespan$comment_year)
+
+# visualising the sentiment over time by yearly average
+dfm_sentiment_graph_entire_timespan_mean <- 
+	ai_sentiment_entire_timespan |> 
+	mutate(comment_year = as.numeric(comment_year)) |>  # Ensure comment_year is numeric
+	group_by(comment_year) |> 
+	summarise(mean=mean(pos_to_neg, na.rm = TRUE)) |> 
+	ggplot(aes(x = comment_year,
+			   y = mean)) +
+	labs(title = "Average Sentiment per Year",
+		 subtitle = "Using the LSD2015 Sentiment Dictionary")+
+	geom_point()+
+	geom_line()+
+	scale_x_continuous(name = "Year",
+					   breaks = 2017:2024,  # Ensure x-axis has breaks for each year
+					   labels = 2017:2024) +
+	scale_y_continuous(name = "Sentiment (0 = negative, 1 = positive)",
+					   limits = c(0,1)) +
+	theme_minimal()
+dfm_sentiment_graph_entire_timespan_mean
+
+
+
+### SAME WITH VADER
+
+install.packages("vader")
+library(vader)
+
+# Analyze sentiment using VADER
+vader_scores <- vader_df(df_comments$comment_text)
+
+# Calculate mean sentiment per year
+mean_vader_sentiment_per_year <- vader_scores %>%
+	mutate(comment_year = df_comments$comment_year) %>%
+	group_by(comment_year) %>%
+	summarise(mean_sentiment = mean(compound, na.rm = TRUE))
+
+# Visualize the results
+ggplot(mean_vader_sentiment_per_year, aes(x = comment_year, y = mean_sentiment)) +
+	geom_line() +
+	geom_point() +
+	scale_x_continuous(name = "Year",
+					   breaks = 2017:2024,  # Ensure x-axis has breaks for each year
+					   labels = 2017:2024) +
+	labs(title = "Average Sentiment per Year using VADER",
+		 x = "Year", y = "Sentiment") +
+	scale_y_continuous(name = "Sentiment (-1 = negative, 1 = positive)",
+					   limits = c(-1,1)) +
+	theme_minimal()
+
+
+### CALCULATING MEAN SENTIMENT BEFORE CHATGPT AND AFTER
+# Define the timeframes
+timeframe1 <- as.Date("2017-01-01") : as.Date("2022-11-29")
+timeframe2 <- as.Date("2022-12-30") : as.Date("2024-03-31")
+
+dfm_sentiment_timeframe_before <- ai_sentiment_entire_timespan |> 
+	filter(comment_running_month >= 70)
+
+dfm_sentiment_timeframe_after <- ai_sentiment_entire_timespan |> 
+	filter(comment_running_month < 70)
+
+# Calculate the mean value of pos_to_neg for each timeframe
+mean_pos_to_neg_timeframe_before <- dfm_sentiment_timeframe_before |> 
+	summarise(mean_pos_to_neg = mean(pos_to_neg, na.rm = TRUE))
+
+mean_pos_to_neg_timeframe_after <- dfm_sentiment_timeframe_after |> 
+	summarise(mean_pos_to_neg = mean(pos_to_neg, na.rm = TRUE))
+
+# Print the results
+print(paste("Mean pos_to_neg for timeframe before:", mean_pos_to_neg_timeframe_before$mean_pos_to_neg))
+print(paste("Mean pos_to_neg for timeframe after:", mean_pos_to_neg_timeframe_after$mean_pos_to_neg))
 
 ## TOPIC MODELLING 
 
@@ -294,17 +415,21 @@ stm_model <- stm(dtm_stm$documents,
 # label the topics
 labelTopics(stm_model)
 
-# create a second structural topic model over timm using comment_running_month
+
+burnin_iterations <- 300  # specify the minimum number of burn-in iterations
+# create a second structural topic model over time using comment_running_month
 stm_model_2 <- stm(dtm_stm$documents,
 				   dtm_stm$vocab,
 				   K = k,
-				   prevalence = ~ s(comment_running_month ),
-				   data = select(dtm_stm$meta, comment_running_month ),
-				   max.em.its = 1500,
-				   init.type = "Spectral")
+				   prevalence = ~ s(comment_running_month),
+				   data = select(dtm_stm$meta, comment_running_month),
+				   max.em.its = 5000,
+				   init.type = "LDA")
 
 labelTopics(stm_model_2, n = 5)
 sl <- sageLabels(stm_model_2, n = 5)
+
+highest_probability <- sl$marginal$prob
 
 frex <- sl$marginal$frex
 l_f1 <- paste0(frex[1,],collapse = " ")
@@ -321,7 +446,7 @@ predicted_probability <- estimateEffect(1:k ~ s(comment_running_month),
 										uncertainty = "Global")
 
 # visualise and print the stm
-#png("stm_results.png", height = 1200, width = 600)
+#png("stm_results.png", height = 800, width = 700)
 par(mfrow = c(5, 1), mar = c(3, 4, 1, .5))
 for (i in 1:k) {
 	plot.estimateEffect(predicted_probability, 
