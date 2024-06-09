@@ -8,7 +8,7 @@ You will find the following folders including the following files:
 
 - `code` → Contains jupyter notebooks for data collection, filtering and cleaning
 - `code/R-Scripts` → Contains the code for our analysis
-- `data` → Contains all the datasets for comments and vidoes
+- `data` → Contains all the datasets for comments and videos
 
 ## Authors
 Ishwarya Sutharsan, 20-117-040
